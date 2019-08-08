@@ -16,12 +16,17 @@ class CreateBeliKriditsTable extends Migration
         Schema::create('beli_kridits', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('kridit_kode');
-            $table->foreign('pembeli_no_KTP')->references('pembeli_no_KTP')->on('pembelis')->onDelete('cascade');
-            $table->foreign('paket_kode')->references('paket_kode')->on('pembelis')->onDelete('cascade');
-            $table->foreign('motor_kode')->references('motor_kode')->on('pembelis')->onDelete('cascade');            $table->date('kridit_tanggal');
-            $table->boolean('fotocopy_KTP');
-            $table->boolean('fotocopy_KK');
-            $table->boolean('fotocopy_slipgaji');
+            $table->unsignedBigInteger('id_pembeli');
+            $table->unsignedBigInteger('id_paket');
+            $table->unsignedBigInteger('motor_id');
+            $table->string('kridit_tanggal');
+            $table->string('fotocopy_KTP');
+            $table->string('fotocopy_KK');
+            $table->string('fotocopy_slipgaji');
+
+            $table->foreign('id_pembeli')->references('id')->on('pembelis')->onDelete('cascade');
+            $table->foreign('id_paket')->references('id')->on('kridit_pakets')->onDelete('cascade');
+            $table->foreign('motor_id')->references('id')->on('motors')->onDelete('cascade');
             $table->timestamps();
         });
     }

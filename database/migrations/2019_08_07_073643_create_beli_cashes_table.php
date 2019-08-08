@@ -16,10 +16,13 @@ class CreateBeliCashesTable extends Migration
         Schema::create('beli_cashes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('cash_code');
-            $table->string('pembeli_no_KTP');
-            $table->string('motor_kode');
-            $table->date('cash_tanggal');
-            $table->double('cash_bayar');
+            $table->unsignedBigInteger('id_pembeli');
+            $table->unsignedBigInteger('motor_id');
+            $table->string('cash_tanggal');
+            $table->string('cash_bayar');
+
+            $table->foreign('id_pembeli')->references('id')->on('pembelis')->onDelete('cascade');
+            $table->foreign('motor_id')->references('id')->on('pembelis')->onDelete('cascade');
             $table->timestamps();
         });
     }

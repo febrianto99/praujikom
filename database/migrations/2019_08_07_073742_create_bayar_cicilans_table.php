@@ -16,12 +16,14 @@ class CreateBayarCicilansTable extends Migration
         Schema::create('bayar_cicilans', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('cicilan_kode');
-            $table->string('kridit_kode');
+            $table->unsignedBigInteger('kridit_id');
             $table->date('cicilan_tanggal');
             $table->integer('cicilan_jumlah');
             $table->integer('cicilan_ke');
             $table->integer('cicilan_sisake');
-            $table->double('cicilan_sisaharga');
+            $table->integer('cicilan_sisaharga');
+
+            $table->foreign('kridit_id')->references('id')->on('beli_kridits')->onDelete('cascade');
             $table->timestamps();
         });
     }
