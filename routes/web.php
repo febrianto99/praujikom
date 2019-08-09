@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes(['register' => true]);
+
+Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:superadmin']], function(){
+    Route::get('/', function() {
+        return 'halo';
+    });
+    Route::resource('user','UserController');
+});
