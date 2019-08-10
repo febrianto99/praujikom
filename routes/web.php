@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes(['register' => true]);
 
+Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'role:superadmin']], function(){
     Route::get('/', function() {
         return 'halo';
