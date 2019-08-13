@@ -40,16 +40,13 @@
                 @role('admin')
 
                  <li class="nav-item">
-                                 <a class="nav-link" href=" /menu1">menu(diwajibkan AUTH ROLE SUPER ADMIN</a>
+                                 <a class="nav-link" href="/">Menu Admin</a>
                 </li>
                  <li class="nav-item">
-                                <a class="nav-link" href=" /menu2">menu(diwajibkan AUTH ROLE ADMIN</a>
-                </li>
-                 <li class="nav-item">
-                                <a class="nav-link" href=" /menu3">menu(diwajibkan AUTH ROLE USER </a>
+                                <a class="nav-link" href="/admin/kategori">Menu Admin</a>
                 </li>
                 <li class="nav-item">
-                                <a class="nav-link" href=" /menu4">menu(diwajibkan AUTH GLOBAL ROLE </a>
+                                <a class="nav-link" href="/">Menu</a>
                 </li>
                 @endrole
             
