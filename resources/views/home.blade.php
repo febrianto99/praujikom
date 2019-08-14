@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    SELAMAT DATANG BOSQUEH
+                    You are logged in!
                 </div>
             </div>
         </div>
