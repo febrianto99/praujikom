@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Pembeli;
+use Session;
+use Auth;
 
 class pembeliController extends Controller
 {
@@ -13,7 +16,8 @@ class pembeliController extends Controller
      */
     public function index()
     {
-        //
+        $pembeli = Pembeli::all();
+        return view('admin.pembeli.index', compact('pembeli'));
     }
 
     /**

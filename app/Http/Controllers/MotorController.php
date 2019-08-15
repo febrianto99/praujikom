@@ -16,8 +16,8 @@ class MotorController extends Controller
      */
     public function index()
     {
-        $motor = Motor::orderBy('created_at', 'desc')->get();
-        return view('motor.index', compact('motor'));
+        $motor = Motor::all();
+        return view('admin.motor.index', compact('motor'));
     }
 
     /**
@@ -28,7 +28,7 @@ class MotorController extends Controller
     public function create()
     {
         $motor = motor::all();
-        return view('motor.create');
+        return view('admin.motor.create');
     }
 
     /**
@@ -41,13 +41,18 @@ class MotorController extends Controller
     {
         $motor = new Motor();
         $motor->motor_id = $request->motor_id;
-        $motor->slug = str_slug($request->motor_id, '-');
+        $motor->motor_merk = $request->motor_merk;
+        $motor->motor_type = $request->motor_type;
+        $motor->motor_warna_pilihan = $request->motor_warna_pilihan;
+        $motor->motor_harga = $request->motor_harga;
+        $motor->motor_gambar = $request->motor_gambar;
+
         $motor->save();
         Session::flash("flash_notification", [
             "level" => "success",
             "message" => "Berhasil menyimpan motor <b>$motor->motor_id</b>!"
         ]);
-        return redirect()->route('motor.index');
+        return redirect()->route('admin.motor.index');
     }
 
     /**
@@ -94,7 +99,7 @@ class MotorController extends Controller
             "level" => "primary",
             "message" => "Berhasil mengubah menjadi motor <b>$motor->motor_id</b>!"
         ]);
-        return redirect()->route('motor.index');
+        return redirect()->route('admin.motor.index');
     }
 
     /**
@@ -108,6 +113,6 @@ class MotorController extends Controller
         $motor = Motor::findOrFail($id);
         $old = $motor->motor_id;
         $motor->delete();
-        return redirect()->route('motor.index');
+        return redirect()->route('admin.motor.index');
     }
 }

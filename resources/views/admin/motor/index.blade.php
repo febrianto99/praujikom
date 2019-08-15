@@ -25,10 +25,10 @@
                     <table id="bs4-table" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                            <th>motor id</th>
+                            <th>id</th>
                                 <th>motor merk</th>
                                 <th>motor type</th>
-                                <th>motor warna_pilihan</th>
+                                <th>motor warna pilihan</th>
                                 <th>motor harga</th>
                                 <th>motor gambar</th>
                                 <th>motor merk</th>
@@ -39,13 +39,12 @@
                         @php $no = 1; @endphp
                             @foreach ($motor as $data)
                             <tr>
-                            <td>{{ $a->motor_id }}</td>
+                            <td>{{ $no++ }}</td>
                                 <td>{{ $data->motor_merk }}</td>
                                 <td>{{ $data->motor_type }}</td>
                                 <td>{{ $data->motor_warna_pilihan }}</td>
                                 <td>{{ $data->motor_harga }}</td>
                                 <td>{{ $data->motor_gambar }}</td>
-                                <td>{{ $data->motor_merk }}</td>
                                 <td>
                                
 								<td style="text-align: center;">
