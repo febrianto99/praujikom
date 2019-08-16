@@ -15,7 +15,7 @@
     <div class="row">
         <div class="col-12">
             <div class="card">
-                <h5 class="card-header">Data Tables pembeli</h5><br>
+                <h5 class="card-header">Data Tables Pembeli</h5><br>
                 <center>
                         <a href="{{ route('pembeli.create') }}"
                             class="la la-cloud-upload btn btn-info btn-rfur if you know that im lonelyfur if you know that im lonelyounded btn-floating btn-outline">&nbsp;Tambah Data
@@ -25,13 +25,11 @@
                     <table id="bs4-table" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                            <th>id</th>
-                                <th>pembeli_nama</th>
-                                <th>pembeli_alamat</th>
-                                <th>pembeli_telepon</th>
-                                <th>pembeli_HP</th>
-                                <th>gambar</th>
-                                <th>merk</th>
+                            <th>Id</th>
+                                <th>Nama</th>
+                                <th>Alamat</th>
+                                <th>Telepon</th>
+                                <th>HP</th>
                                 <th style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
@@ -63,8 +61,6 @@
                             @endforeach
                         </tbody>
                     </table>
-
-
                 </div>
             </div>
         </div>

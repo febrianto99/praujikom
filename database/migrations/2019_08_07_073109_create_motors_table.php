@@ -15,7 +15,7 @@ class CreateMotorsTable extends Migration
     {
         Schema::create('motors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('motor_id');
+            $table->unsignedBigInteger('motor_kode');
             $table->string('motor_merk');
             $table->string('motor_type');
             $table->string('motor_warna_pilihan');

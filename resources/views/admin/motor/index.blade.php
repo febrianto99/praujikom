@@ -25,13 +25,13 @@
                     <table id="bs4-table" class="table table-striped table-bordered" style="width:100%">
                         <thead>
                             <tr>
-                            <th>id</th>
-                                <th>motor merk</th>
-                                <th>motor type</th>
-                                <th>motor warna pilihan</th>
-                                <th>motor harga</th>
-                                <th>motor gambar</th>
-                                <th>motor merk</th>
+                            <th>Id</th>
+                            <th>Motor Kode</th>
+                                <th>Motor Merk</th>
+                                <th>Motor Type</th>
+                                <th>Motor Warna Pilihan</th>
+                                <th>Motor Harga</th>
+                                <th>Motor Gambar</th>
                                 <th style="text-align: center;">Aksi</th>
                             </tr>
                         </thead>
@@ -40,13 +40,12 @@
                             @foreach ($motor as $data)
                             <tr>
                             <td>{{ $no++ }}</td>
+                                <td>{{ $data->motor_kode }}</td>
                                 <td>{{ $data->motor_merk }}</td>
                                 <td>{{ $data->motor_type }}</td>
                                 <td>{{ $data->motor_warna_pilihan }}</td>
                                 <td>{{ $data->motor_harga }}</td>
-                                <td>{{ $data->motor_gambar }}</td>
-                                <td>
-                               
+                               <td><img src="{{ asset('assets/img/motor/'.$data->motor_gambar)}}" width="100"></td>
 								<td style="text-align: center;">
                                     <form action="{{route('motor.destroy', $data->id)}}" method="post">
                                         {{csrf_field()}}

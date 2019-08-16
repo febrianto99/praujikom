@@ -27,7 +27,8 @@ class pembeliController extends Controller
      */
     public function create()
     {
-        //
+        $pembeli = pembeli::all();
+        return view('admin.pembeli.create');
     }
 
     /**
@@ -38,7 +39,20 @@ class pembeliController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $pembeli = new Pembeli();
+        $pembeli->pembeli_id = $request->pembeli_id;
+        $pembeli->pembeli_merk = $request->pembeli_merk;
+        $pembeli->pembeli_type = $request->pembeli_type;
+        $pembeli->pembeli_warna_pilihan = $request->pembeli_warna_pilihan;
+        $pembeli->pembeli_harga = $request->pembeli_harga;
+        $pembeli->pembeli_gambar = $request->pembeli_gambar;
+
+        $pembeli->save();
+        Session::flash("flash_notification", [
+            "level" => "success",
+            "message" => "Berhasil menyimpan pembeli <b>$pembeli->pembeli_id</b>!"
+        ]);
+        return redirect()->route('pembeli.index');
     }
 
     /**

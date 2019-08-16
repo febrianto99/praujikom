@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Motor;
+use File;
 use Session;
 use Auth;
 
@@ -40,19 +41,25 @@ class MotorController extends Controller
     public function store(Request $request)
     {
         $motor = new Motor();
-        $motor->motor_id = $request->motor_id;
+        $motor->motor_kode = $request->motor_kode;
         $motor->motor_merk = $request->motor_merk;
         $motor->motor_type = $request->motor_type;
         $motor->motor_warna_pilihan = $request->motor_warna_pilihan;
         $motor->motor_harga = $request->motor_harga;
-        $motor->motor_gambar = $request->motor_gambar;
-
+        if ($request->hasfile('motor_gambar')) {
+            $file = $request->file('motor_gambar');
+            $path = public_path() .
+            '/assets/img/motor';
+            $filename = str_random(6) . '_'
+            . $file->getClientOriginalName();
+            $upload = $file->move(
+                $path,
+                $filename
+            );
+            $motor->motor_gambar = $filename;
+        }
         $motor->save();
-        Session::flash("flash_notification", [
-            "level" => "success",
-            "message" => "Berhasil menyimpan motor <b>$motor->motor_id</b>!"
-        ]);
-        return redirect()->route('admin.motor.index');
+        return redirect()->route('motor.index');
     }
 
     /**
@@ -89,15 +96,15 @@ class MotorController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'motor_id' => 'required',
+            'motor_kode' => 'required',
         ]);
         $motor = Motor::findOrFail($id);
-        $motor->motor_id = $request->motor_id;
-        $motor->slug = str_slug($request->motor_id, '-');
+        $motor->motor_kode = $request->motor_kode;
+        $motor->slug = str_slug($request->motor_kode, '-');
         $motor->save();
         Session::flash("flash_notification", [
             "level" => "primary",
-            "message" => "Berhasil mengubah menjadi motor <b>$motor->motor_id</b>!"
+            "message" => "Berhasil mengubah menjadi motor <b>$motor->motor_kode</b>!"
         ]);
         return redirect()->route('admin.motor.index');
     }
@@ -111,7 +118,7 @@ class MotorController extends Controller
     public function destroy($id)
     {
         $motor = Motor::findOrFail($id);
-        $old = $motor->motor_id;
+        $old = $motor->motor_kode;
         $motor->delete();
         return redirect()->route('admin.motor.index');
     }

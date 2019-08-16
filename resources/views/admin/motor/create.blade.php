@@ -22,41 +22,35 @@
             <div class="card">
                 <div class="card-header">Membuat Data motor</div>
                 <div class="card-body">
-                    <form action="{{ route('motor.store') }}" method="post">
+                    <form action="{{ route('motor.store') }}" method="post" enctype="multipart/form-data">
                         {{ csrf_field() }}
 
     <div class="form-group">
-        <label for="">motor</label>
-        <input class="form-control" type="text" name="motor_id">
+        <label for="">Motor Kode</label>
+        <input class="form-control" type="text" name="motor_kode">
     </div>
     <div class="form-group">
-        <label for="">motor merk</label>
+        <label for="">Merk</label>
         <input class="form-control" type="text" name="motor_merk">
     </div>
     <div class="form-group">
-        <label for="">type motor</label>
+        <label for="">Type</label>
         <input class="form-control" type="text" name="motor_type">
     </div>
     <div class="form-group">
-        <label for="">warna pilihan</label>
+        <label for="">Warna</label>
         <input class="form-control" type="text" name="motor_warna_pilihan">
     </div>
     <div class="form-group">
-        <label for="">harga motor</label>
+        <label for="">Harga</label>
         <input class="form-control" type="text" name="motor_harga">
-    </div>
+        </div>
     <div class="form-group">
-        <label for="">gambar motor</label>
-        <input class="form-control" type="text" name="motor_gambar">
+    <label for="">Foto</label>
+    <input type="file" name="motor_gambar" id="motor_gambar" class="form-control" required>
     </div>
-    <div class="form-group">
-        <button type="submit" class="btn btn-outline-info">
-        Simpan Data
-        </button>
-    </div>
-    <div class="form-group">
-        <a href="{{ url('motor') }}" class="btn btn-outline-info">Kembali</a>
-    </div>
+    <button type="submit" name="Simpan" class="btn btn-md btn-info">Simpan</button>
+    <a name="" id="" class="btn btn-md btn-warning" href="{{route('motor.index')}}" role="button">kembali</a>
         </form>
             </div>
                 </div>
