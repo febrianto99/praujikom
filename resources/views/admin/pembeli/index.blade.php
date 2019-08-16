@@ -37,7 +37,6 @@
                         @php $no = 1; @endphp
                             @foreach ($pembeli as $data)
                             <tr>
-                            <td>{{ $data->id_pembeli }}</td>
                                 <td>{{ $data->pembeli_nama }}</td>
                                 <td>{{ $data->pembeli_alamat }}</td>
                                 <td>{{ $data->pembeli_telepon }}</td>

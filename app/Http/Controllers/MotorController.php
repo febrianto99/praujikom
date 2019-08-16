@@ -83,7 +83,7 @@ class MotorController extends Controller
     public function edit($id)
     {
         $motor = Motor::findOrFail($id);
-        return view('admin.motor.edit', compact('motor'));
+        return view('motor.edit', compact('motor'));
     }
 
     /**
@@ -106,7 +106,7 @@ class MotorController extends Controller
             "level" => "primary",
             "message" => "Berhasil mengubah menjadi motor <b>$motor->motor_kode</b>!"
         ]);
-        return redirect()->route('admin.motor.index');
+        return redirect()->route('motor.index');
     }
 
     /**
@@ -120,6 +120,6 @@ class MotorController extends Controller
         $motor = Motor::findOrFail($id);
         $old = $motor->motor_kode;
         $motor->delete();
-        return redirect()->route('admin.motor.index');
+        return redirect()->route('motor.index');
     }
 }
